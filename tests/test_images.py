@@ -17,7 +17,7 @@ def clean_up_images():
     image_dir = path.join(parent_dir, IMG_LOCAL_DIR)
     for file in os.listdir(image_dir):
         if file.endswith(".jpg"):
-           remove(path.join(image_dir, file))
+            remove(path.join(image_dir, file))
 
 
 class TestExternalResources(TestCase):
