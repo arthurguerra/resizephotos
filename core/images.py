@@ -1,10 +1,12 @@
 import logging
+
 from PIL import Image
 
 from core import MEDIUM_IMG_SIZE, LARGE_IMG_SIZE, SMALL_IMG_SIZE, WEBSERVICE_ENDPOINT
 from core.external_resources import fetch_images_json, create_img_dict, get_local_image_path, fetch_image
 
 logger = logging.getLogger('resizephotos')
+logger.setLevel(logging.INFO)
 
 
 class ResizedPhoto:

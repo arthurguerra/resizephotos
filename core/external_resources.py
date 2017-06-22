@@ -7,14 +7,13 @@ from core import IMG_LOCAL_DIR
 
 logger = logging.getLogger('resizephotos')
 
-
 def fetch_images_json(endpoint):
     """
     Gets the list of images urls from a given endpoint
     :param endpoint: url to get the list of images urls from
     :return: list of images urls as JSON
     """
-    logger.error('Fetching images JSON from %s', endpoint)
+    logger.debug('Fetching images JSON from %s', endpoint)
 
     with urlopen(endpoint) as url:
         images = json.loads(url.read().decode())['images']
@@ -27,7 +26,7 @@ def fetch_image(image_name, image_url):
     :param image_name: name of the image that will be saved locally
     :param image_url: url to get the image from
     """
-    logger.error('Fetching image %s from %s', image_name, image_url)
+    logger.info('Fetching image %s from %s', image_name, image_url)
 
     local_img_path = get_local_image_path(image_name)
 
@@ -39,7 +38,7 @@ def fetch_image(image_name, image_url):
 
 
 def get_local_image_path(image_name):
-    logger.error('Getting local image path %s', image_name)
+    logger.info('Getting local image path %s', image_name)
 
     parent_dir = path.join(getcwd(), pardir)
     local_image_path = path.join(parent_dir, IMG_LOCAL_DIR, image_name)
@@ -53,7 +52,7 @@ def create_img_dict(images_urls):
     :param images_urls: list of image urls
     :return: dictionary mapping the image name with its URL
     """
-    logger.error('Creating dict for images URLs')
+    logger.info('Creating dict for images URLs')
 
     img_dict = {}
     for img_url_json in images_urls:

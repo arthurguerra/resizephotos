@@ -1,4 +1,6 @@
 #!flask/bin/python
+import logging
+
 from flask import Flask, jsonify, make_response, send_file
 
 from core import IMG_MIME_TYPE
@@ -43,4 +45,5 @@ def handle_image_not_found(error):
 
 
 if __name__ == '__main__':
+    app.logger.setLevel(logging.INFO)
     app.run(debug=True)
