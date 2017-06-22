@@ -1,7 +1,7 @@
 import logging
 from PIL import Image
 
-from core import MEDIUM_IMG_SIZE, LARGE_IMG_SIZE, SMALL_IMG_SIZE
+from core import MEDIUM_IMG_SIZE, LARGE_IMG_SIZE, SMALL_IMG_SIZE, WEBSERVICE_ENDPOINT
 from core.external_resources import fetch_images_json, create_img_dict, get_local_image_path, fetch_image
 
 logger = logging.getLogger('resizephotos')
@@ -12,9 +12,7 @@ class ResizedPhoto:
     Class used to get all images from the webservice endpoint
     """
     def __init__(self):
-        self.webservice_endpoint = "http://54.152.221.29/images.json"
-
-        images_urls = fetch_images_json(self.webservice_endpoint)
+        images_urls = fetch_images_json(WEBSERVICE_ENDPOINT)
         self.images_dict = create_img_dict(images_urls)
 
     def get_small_image(self, image_name):
