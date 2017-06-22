@@ -44,5 +44,20 @@ class TestExternalResources(TestCase):
         image = Image.open(self.rp.get_large_image(self.image_name))
         self.assertEqual(LARGE_IMG_SIZE, image.size)
 
+    def test_get_resized_image_small(self):
+        image_resized_path = self.rp._get_resized_image(self.image_name)
+        image = Image.open(image_resized_path)
+        self.assertEqual(SMALL_IMG_SIZE, image.size)
+
+    def test_get_resized_image_medium(self):
+        image_resized_path = self.rp._get_resized_image(self.image_name, MEDIUM_IMG_SIZE)
+        image = Image.open(image_resized_path)
+        self.assertEqual(MEDIUM_IMG_SIZE, image.size)
+
+    def test_get_resized_image_large(self):
+        image_resized_path = self.rp._get_resized_image(self.image_name, LARGE_IMG_SIZE)
+        image = Image.open(image_resized_path)
+        self.assertEqual(LARGE_IMG_SIZE, image.size)
+
 if __name__ == '__main__':
     main()
