@@ -7,6 +7,7 @@ from core import IMG_LOCAL_DIR
 
 logger = logging.getLogger('resizephotos')
 
+
 def fetch_images_json(endpoint):
     """
     Gets the list of images urls from a given endpoint
