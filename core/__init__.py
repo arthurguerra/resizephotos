@@ -1,4 +1,6 @@
 IMG_LOCAL_DIR = "images"
+LOGS_LOCAL_DIR = "logs"
+IMG_MIME_TYPE = 'image/jpg'
 
 SMALL_IMG_SIZE = (320, 240)
 MEDIUM_IMG_SIZE = (384, 288)

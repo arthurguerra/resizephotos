@@ -1,11 +1,11 @@
 #!flask/bin/python
 import atexit
 from flask import Flask, jsonify, make_response, send_file
+
+from core import IMG_MIME_TYPE
 from core.images import ResizedPhoto
 
 app = Flask(__name__)
-
-IMG_MIME_TYPE = 'image/jpg'
 
 gei = ResizedPhoto()
 
