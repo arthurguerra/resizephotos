@@ -1,0 +1,1 @@
+Directory used as a local repository for external images
