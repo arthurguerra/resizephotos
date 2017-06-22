@@ -1,5 +1,4 @@
 #!flask/bin/python
-import atexit
 from flask import Flask, jsonify, make_response, send_file
 
 from core import IMG_MIME_TYPE
