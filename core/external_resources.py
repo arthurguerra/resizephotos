@@ -39,7 +39,7 @@ def fetch_image(image_name, image_url):
 
 
 def get_local_image_path(image_name):
-    logger.info('Getting local image path %s', image_name)
+    logger.debug('Getting local image path %s', image_name)
 
     parent_dir = path.join(getcwd(), pardir)
     local_image_path = path.join(parent_dir, IMG_LOCAL_DIR, image_name)
