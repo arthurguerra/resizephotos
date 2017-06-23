@@ -36,13 +36,13 @@ class ResizedPhoto:
         image = Image.open(local_image)
         image.thumbnail(size, Image.LANCZOS)
 
-        resized_image_path = "{}_{}_{}".format(size[0], size[1], image_name)
-        image_resized_path = get_local_image_path(resized_image_path)
+        image_name_resized = "{}_{}_{}".format(size[0], size[1], image_name)
+        image_path_resized = get_local_image_path(image_name_resized)
 
-        with open(image_resized_path, 'wb') as f:
+        with open(image_path_resized, 'wb') as f:
             image.save(f)
 
-        return image_resized_path
+        return image_path_resized
 
     def _get_image(self, image_name):
         """
