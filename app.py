@@ -3,7 +3,7 @@ import logging
 
 from flask import Flask, jsonify, make_response, send_file
 
-from core import IMG_MIME_TYPE
+from core import IMG_MIME_TYPE, SMALL_IMG_SIZE, MEDIUM_IMG_SIZE, LARGE_IMG_SIZE
 from core.images import ResizedPhoto
 
 app = Flask('resizephotos')
@@ -14,6 +14,23 @@ resized_photo = ResizedPhoto()
 @app.route('/')
 def index():
     return "Hello, Image Resize!"
+
+
+@app.route('/api/images/', methods=['GET'])
+def get_images():
+    format_dict = {}
+
+    for image_name, image_url in resized_photo.images_dict.items():
+        format_dict[image_name] = {
+            'url': image_url,
+            'formats': {
+                'small': SMALL_IMG_SIZE,
+                'medium': MEDIUM_IMG_SIZE,
+                'large': LARGE_IMG_SIZE
+            }
+        }
+
+    return jsonify(format_dict)
 
 
 @app.route('/api/images/small/<image_name>', methods=['GET'])
