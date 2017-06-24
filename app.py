@@ -41,6 +41,7 @@ def not_found():
 
 @app.errorhandler(Exception)
 def handle_image_not_found(error):
+    app.logger.error(error)
     return make_response(jsonify({'error': 'Image Not found'}), 404)
 
 
