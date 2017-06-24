@@ -42,7 +42,7 @@ def get_local_image_path(image_name):
     logger.debug('Getting local image path %s', image_name)
 
     parent_dir = path.join(getcwd(), pardir)
-    local_image_path = path.join(parent_dir, IMG_LOCAL_DIR, image_name)
+    local_image_path = path.join(parent_dir, 'resizephotos', IMG_LOCAL_DIR, image_name)
     return local_image_path
 
 

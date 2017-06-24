@@ -1,24 +1,12 @@
 import os
 import random
 import string
-from os import path, getcwd, remove
-from os.path import pardir
 from unittest import TestCase, main
 from urllib.error import URLError
 
-from core import WEBSERVICE_ENDPOINT, IMG_LOCAL_DIR
+from core import WEBSERVICE_ENDPOINT
 from core.external_resources import fetch_images_json, fetch_image, create_img_dict
-
-
-def clean_up_images():
-    """
-    Deletes all JPG files from the IMAGES directory for testing
-    """
-    parent_dir = path.join(getcwd(), pardir)
-    image_dir = path.join(parent_dir, IMG_LOCAL_DIR)
-    for file in os.listdir(image_dir):
-        if file.endswith(".jpg"):
-            remove(path.join(image_dir, file))
+from tests import clean_up_images
 
 
 class TestExternalResources(TestCase):

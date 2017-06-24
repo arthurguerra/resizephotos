@@ -1,23 +1,10 @@
-import os
-from os import path, getcwd, remove
-from os.path import pardir
 from unittest import TestCase, main
 
 from PIL import Image
 
-from core import IMG_LOCAL_DIR, SMALL_IMG_SIZE, MEDIUM_IMG_SIZE, LARGE_IMG_SIZE
+from core import SMALL_IMG_SIZE, MEDIUM_IMG_SIZE, LARGE_IMG_SIZE
 from core.images import ResizedPhoto
-
-
-def clean_up_images():
-    """
-    Deletes all JPG files from the IMAGES directory for testing
-    """
-    parent_dir = path.join(getcwd(), pardir)
-    image_dir = path.join(parent_dir, IMG_LOCAL_DIR)
-    for file in os.listdir(image_dir):
-        if file.endswith(".jpg"):
-            remove(path.join(image_dir, file))
+from tests import clean_up_images
 
 
 class TestExternalResources(TestCase):
