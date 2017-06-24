@@ -1,9 +1,31 @@
 # Resize Photos
 
+# Run App
+
+Before running the app, make sure you have both Python 3
+and `pip` installed on your system.
+
 ## Dependencies
 
-- Python 3
-- Pillow 4.1.1
-- Flask 0.12.2
-- Flask Testing 0.6.2
-- Flask-PyMongo-0.5.1
+This application depends on external libraries to be fully
+operational, in order to download all of them type the
+following commands on your terminal:
+
+    $ cd resizephotos
+    $ pip install -r requirements.txt
+
+Now that you downloaded all project requirements,
+you can run the application by typing on your terminal:
+
+    $ python app.py
+
+# Run Tests
+
+If you want to run all unit tests of this application simply
+type the following commands:
+
+    $ cd resizephotos
+    $ python -m unittest discover
+
+The `discover` option above will find the `tests` package,
+and execute all tests existing in this package.
