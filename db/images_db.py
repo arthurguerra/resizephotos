@@ -12,7 +12,7 @@ IMAGE_RESIZED_FILE = 'image_resized_file'
 
 
 def save_image(image_name_resized, image_bytes):
-    logger.info('Saving image %s (%s) to DB', image_name_resized, image_bytes)
+    logger.info('Saving image %s to DB', image_name_resized)
 
     image_resized_file = Binary(image_bytes)
 
