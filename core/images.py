@@ -54,11 +54,13 @@ class ResizedPhoto:
             image = Image.open(local_image)
             image.thumbnail(size, Image.LANCZOS)
 
+            bytes = BytesIO()
+            image.save(bytes, format='JPG')
+            image_bytes = bytes.getvalue()
+
             # creating a new image of the desired size (small, medium or large)
-            with open(image_path_resized, 'r+b') as f:
+            with open(image_path_resized, 'wb') as f:
                 image.save(f)
-                f.seek(0)
-                image_bytes = BytesIO(f.read()).getvalue()
 
             # image not exist in the database yet, so save it
             images_db.save_image(image_name_resized, image_path_resized)
