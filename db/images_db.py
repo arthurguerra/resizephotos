@@ -1,5 +1,4 @@
 import logging
-from io import BytesIO
 
 from bson import Binary
 from pymongo import MongoClient
@@ -12,16 +11,10 @@ db = client.resizephotos
 IMAGE_RESIZED_FILE = 'image_resized_file'
 
 
-def save_image(image_name_resized, image_path_resized):
-    logger.info('Saving image %s (%s) to DB', image_name_resized, image_path_resized)
+def save_image(image_name_resized, image_bytes):
+    logger.info('Saving image %s (%s) to DB', image_name_resized, image_bytes)
 
-    if image_path_resized is None:
-        logger.error('Invalid image: file not found locally.')
-        raise Exception('Image file not found')
-
-    with open(image_path_resized, 'rb') as f:
-        image_resized_bytes = BytesIO(f.read()).getvalue()
-        image_resized_file = Binary(image_resized_bytes)
+    image_resized_file = Binary(image_bytes)
 
     return db.images.insert_one({
         'image_resized_name': image_name_resized,

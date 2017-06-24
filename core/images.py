@@ -43,10 +43,7 @@ class ResizedPhoto:
             # look for image in the database
             image_bytes = images_db.find_image(image_name_resized)
 
-        if image_bytes:
-            with open(image_path_resized, 'wb') as f:
-                Image.open(BytesIO(image_bytes)).save(f)
-        else:
+        if not image_bytes:
             # image not in cache not in the database - image never retrieved before
             local_image = self._get_image_from_endpoint(image_name)
 
@@ -55,15 +52,15 @@ class ResizedPhoto:
             image.thumbnail(size, Image.LANCZOS)
 
             bytes = BytesIO()
-            image.save(bytes, format='JPG')
+            image.save(bytes, format='JPEG')
             image_bytes = bytes.getvalue()
 
-            # creating a new image of the desired size (small, medium or large)
-            with open(image_path_resized, 'wb') as f:
-                image.save(f)
-
             # image not exist in the database yet, so save it
-            images_db.save_image(image_name_resized, image_path_resized)
+            images_db.save_image(image_name_resized, image_bytes)
+
+        # creating a new image of the desired size (small, medium or large)
+        with open(image_path_resized, 'wb') as f:
+            Image.open(BytesIO(image_bytes)).save(f)
 
         # updating cache
         self.images_cache[image_name_resized] = image_bytes
