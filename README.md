@@ -1,5 +1,9 @@
 # Resize Photos
 
+Resize Photos is an application that consumes images from an external
+endpoint and generate three different photo formats for each one, they are:
+small (320x240), medium (384x288) and large (640x480).
+
 # Run App
 
 Before running the app, make sure you have both Python 3
