@@ -17,6 +17,7 @@ following commands on your terminal:
 Now that you downloaded all project requirements,
 you can run the application by typing on your terminal:
 
+    $ cd resizephotos
     $ python app.py
 
 # Run Tests
